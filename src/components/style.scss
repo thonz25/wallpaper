@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Pacifico&family=Roboto:ital@1&display=swap");
+
+$mainFont: "Pacifico", cursive;
+$timeFont: "Orbitron", sans-serif;
+$quoteFont: "Roboto", sans-serif;
+$mainColor: #800080;
+$brownColor: #663300;
+$blueColor: #0b3d91;
+h1 {
+  font-family: $mainFont;
+  color: #333333;
+}
