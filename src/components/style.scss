@@ -6,7 +6,80 @@ $quoteFont: "Roboto", sans-serif;
 $mainColor: #800080;
 $brownColor: #663300;
 $blueColor: #0b3d91;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background-image: url("../img/wedding.jpg");
+}
 h1 {
   font-family: $mainFont;
   color: #333333;
+}
+
+.clock {
+  width: 15rem;
+  height: 15rem;
+  background-color: #663300;
+  border-radius: 50%;
+  position: relative;
+
+  .hour {
+    background-color: #333333;
+    width: 8px;
+    height: 4rem;
+    transform-origin: center;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+  }
+  .min {
+    background-color: #333333;
+    width: 6px;
+    height: 5rem;
+    transform-origin: center;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    rotate: 45deg;
+    transform-origin: bottom;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+  }
+  .sec {
+    background-color: #333333;
+    width: 4px;
+    height: 6rem;
+    transform-origin: center;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%);
+    rotate: 60deg;
+    transform-origin: bottom;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+    z-index: 9;
+  }
+  .center {
+    background-color: $mainColor;
+    width: 2rem;
+    height: 2rem;
+    transform-origin: center;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border-radius: 50%;
+    z-index: 10;
+    transform-origin: bottom;
+  }
 }
