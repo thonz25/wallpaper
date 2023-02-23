@@ -3,7 +3,16 @@ import { useState, useEffect } from "react";
 import "../components/style.scss";
 
 const ScreenSaver = () => {
-  const [weather, setWeather] = useState();
+  interface forecast {
+    img: string;
+    temp: string;
+    type: string;
+  }
+  const [weather, setWeather] = useState<forecast>({
+    img: "string",
+    temp: "string",
+    type: "string",
+  });
   const [quote, setQuote] = useState({
     text: "",
     author: "",
@@ -19,7 +28,6 @@ const ScreenSaver = () => {
   useEffect(() => {
     getLocation();
     getQuote();
-    getTime();
   }, []);
 
   const getLocation = () => {
@@ -47,7 +55,6 @@ const ScreenSaver = () => {
         setQuote(response[randomNum]);
       })
       .catch((err) => console.error(err));
-    console.log(quote);
   };
 
   const fetchWeather = async (latitude: number, longitude: number) => {
@@ -58,9 +65,14 @@ const ScreenSaver = () => {
     );
 
     const data = await response.json().catch((err) => console.log(err));
-    setWeather(data);
+    setWeather({
+      img: `https://openweathermap.org/img/w/${data.weather[0].icon}.png`,
+      temp: data.main.temp,
+      type: data.weather[0].main,
+    });
     console.log(data);
   };
+
   const getTime = () => {
     const time = new Date();
     const hour = (time.getHours() / 12) * 360;
@@ -75,8 +87,8 @@ const ScreenSaver = () => {
   };
   setTimeout(() => {
     getTime();
-    console.log(timeNow);
   }, 1000);
+
   return (
     <div style={{ backgroundImage: "url(../img/wedding.jpg)" }}>
       <h1>
@@ -88,6 +100,16 @@ const ScreenSaver = () => {
         <p>- {quote.author} -</p>
       </div>
 
+      <div className="weather-container">
+        <p className="type">{weather.type}</p>
+        <img src={weather.img} />
+
+        <p>
+          {weather.temp}
+          <sup>℃</sup>
+        </p>
+      </div>
+
       <div className="time-container">
         <div className="clock">
           <div className="hands">
@@ -96,7 +118,6 @@ const ScreenSaver = () => {
             <div className="sec" style={{ rotate: `${timeNow.sec}deg` }}></div>
           </div>
 
-          <div className="number"></div>
           <div className="twelve time">12</div>
           <div className="three time">3</div>
           <div className="six time">6</div>

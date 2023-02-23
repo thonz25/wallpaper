@@ -45,7 +45,7 @@ h1 {
   letter-spacing: 1px;
   border-radius: 0.8rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
   background-color: rgba(255, 255, 255, 0.2);
   p {
     margin-top: 0.5em;
@@ -61,16 +61,21 @@ h1 {
   top: 2%;
 }
 .clock {
-  border: 5px solid $mainColor;
+  border: 1px solid $brownColor;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   width: 15rem;
   height: 15rem;
-  background-color: gainsboro;
+  background-color: rgba(255, 255, 255, 0.2);
+
+  backdrop-filter: blur(2px);
   border-radius: 50%;
   position: relative;
 
   .time {
     position: absolute;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: $mainColor;
   }
   .twelve {
     top: 0.5em;
@@ -118,6 +123,7 @@ h1 {
     .sec {
       width: 2px;
       height: 5.5rem;
+      background-color: #663300;
     }
   }
   .hands::before {
@@ -127,5 +133,38 @@ h1 {
     background-color: #800080;
     border-radius: 50%;
     z-index: 9;
+  }
+}
+
+.weather-container {
+  height: 15rem;
+  width: 11rem;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  border-radius: 0.4rem;
+  text-align: center;
+  padding: 1em;
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+  }
+  .type {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #663300;
+    font-weight: bold;
+  }
+  p {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #800080;
+    sup {
+      font-size: 1rem;
+    }
   }
 }
